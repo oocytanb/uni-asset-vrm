@@ -728,6 +728,11 @@ namespace UniGLTF {
     {
         f.BeginMap(0); // dummy
 
+        if(value.KHR_materials_unlit!=null)
+        {
+            f.Key("KHR_materials_unlit"); f.GenSerialize(value.KHR_materials_unlit);
+        }
+
         f.EndMap();
     }
 
@@ -809,7 +814,7 @@ namespace UniGLTF {
             f.Key("material"); f.GenSerialize(value.material);
         }
 
-        if(value.targets.Count>0)
+        if(value.targets!=null && value.targets.Count>0)
         {
             f.Key("targets"); f.GenSerialize(value.targets);
         }
@@ -952,7 +957,7 @@ namespace UniGLTF {
             f.Key("name"); f.GenSerialize(value.name);
         }
 
-        if(value.children!=null)
+        if(value.children != null && value.children.Length>0)
         {
             f.Key("children"); f.GenSerialize(value.children);
         }
